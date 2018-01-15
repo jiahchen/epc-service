@@ -79,9 +79,9 @@ blueprints:
         permit_all_slices: True
         template: s11_template
       - name: sgi_network
-        subnet: 115.0.0.0/24
+        subnet: 10.8.1.0/24
         permit_all_slices: True
-        template: oai_sgi_template
+        template: sgi_template
     graph:
       - name: VMMETenant
         networks:
