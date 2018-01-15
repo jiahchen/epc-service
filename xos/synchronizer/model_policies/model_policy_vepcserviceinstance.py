@@ -74,14 +74,7 @@ class VEPCServiceInstancePolicy(Policy):
             if not vendor:
                 raise Exception('No VHSS vendors')
             service_instance.vspgwc_vendor = vendor
-            service_instance.invalidate_cache('vmme_vendor')
-
-        elif service_instance.leaf_model_name == 'OAISPGWInstance':
-            vendor = VSPGWCVendor.objects.first()
-            if not vendor:
-                raise Exception('No OAISPGWInstance vendors')
-            service_instance.vspgwc_vendor = vendor
-            service_instance.invalidate_cache('oaispgw_vendor')
+            service_instance.invalidate_cache('vhss_vendor')
 
 
     def child_service_instance_from_name(self, name):
