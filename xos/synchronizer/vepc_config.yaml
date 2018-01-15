@@ -31,13 +31,13 @@ blueprints:
         template: spgw_template
     graph:
       - name: VENBServiceInstance
-        networks: 
+        networks:
           - management
           - s1u_network
           - sgi_network
           - s11_network
       - name: VSPGWCTenant
-        networks: 
+        networks:
           - management
           - s11_network
           - spgw_network
@@ -46,10 +46,10 @@ blueprints:
             networks:
               - s11_network
           - name: VSPGWUTenant
-            networks: 
+            networks:
               - spgw_network
       - name: VSPGWUTenant
-        networks: 
+        networks:
           - management
           - s1u_network
           - sgi_network
@@ -59,6 +59,54 @@ blueprints:
             networks:
               - s1u_network
               - sgi_network
+
+  - name: oaiepc
+    networks:
+      - name: s1mme_network
+        subnet: 111.0.0.0/24
+        permit_all_slices: True
+        template: s1u_template
+      - name: s1u_network
+        subnet: 112.0.0.0/24
+        permit_all_slices: True
+        template: s11_template
+      - name: s6a_network
+        subnet: 113.0.0.0/24
+        permit_all_slices: True
+        template: s6a_template
+      - name: s11_network
+        subnet: 114.0.0.0/24
+        permit_all_slices: True
+        template: s11_template
+      - name: sgi_network
+        subnet: 115.0.0.0/24
+        permit_all_slices: True
+        template: sgi_template
+    graph:
+      - name: VMMETenant
+        networks:
+          - management
+          - s6a_network
+          - s11_network
+          - s1mme_network
+      - name: VHSSTenant
+        networks:
+          - management
+          - s6a_network
+        links:
+          - name: VMMETenant
+            networks:
+              - s6a_network
+      - name: OAISPGWInstance
+        networks:
+          - management
+          - s1u_network
+          - sgi_network
+          - s11_network
+        links:
+          - name: VENBServiceInstance
+            networks:
+              - s11_network
 
 dependency_graph: "/opt/xos/synchronizers/epc-service/model-deps"
 #steps_dir: "/opt/xos/synchronizers/epc-service/steps"
