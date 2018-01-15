@@ -104,7 +104,7 @@ blueprints:
           - sgi_network
           - s11_network
         links:
-          - name: VENBServiceInstance
+          - name: VMMETenant
             networks:
               - s11_network
 
