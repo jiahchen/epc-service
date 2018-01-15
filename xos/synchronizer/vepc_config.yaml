@@ -65,11 +65,11 @@ blueprints:
       - name: s1mme_network
         subnet: 111.0.0.0/24
         permit_all_slices: True
-        template: s1u_template
+        template: oai_s1mme_template
       - name: s1u_network
         subnet: 112.0.0.0/24
         permit_all_slices: True
-        template: s11_template
+        template: oai_s1u_template
       - name: s6a_network
         subnet: 113.0.0.0/24
         permit_all_slices: True
@@ -81,7 +81,7 @@ blueprints:
       - name: sgi_network
         subnet: 115.0.0.0/24
         permit_all_slices: True
-        template: sgi_template
+        template: oai_sgi_template
     graph:
       - name: VMMETenant
         networks:

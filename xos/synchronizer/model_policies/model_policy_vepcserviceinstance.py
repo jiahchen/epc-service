@@ -54,12 +54,34 @@ class VEPCServiceInstancePolicy(Policy):
                 raise Exception('No VSPGWU vendors')
             service_instance.vspgwu_vendor = vendor
             service_instance.invalidate_cache('vspgwu_vendor')
+
         elif service_instance.leaf_model_name == 'VSPGWCTenant':
             vendor = VSPGWCVendor.objects.first()
             if not vendor:
                 raise Exception('No VSPGWC vendors')
             service_instance.vspgwc_vendor = vendor
             service_instance.invalidate_cache('vspgwc_vendor')
+
+        elif service_instance.leaf_model_name == 'VMMETenant':
+            vendor = VSPGWCVendor.objects.first()
+            if not vendor:
+                raise Exception('No VMME vendors')
+            service_instance.vspgwc_vendor = vendor
+            service_instance.invalidate_cache('vmme_vendor')
+
+        elif service_instance.leaf_model_name == 'VHSSTenant':
+            vendor = VSPGWCVendor.objects.first()
+            if not vendor:
+                raise Exception('No VHSS vendors')
+            service_instance.vspgwc_vendor = vendor
+            service_instance.invalidate_cache('vmme_vendor')
+
+        elif service_instance.leaf_model_name == 'OAISPGWInstance':
+            vendor = VSPGWCVendor.objects.first()
+            if not vendor:
+                raise Exception('No OAISPGWInstance vendors')
+            service_instance.vspgwc_vendor = vendor
+            service_instance.invalidate_cache('oaispgw_vendor')
 
 
     def child_service_instance_from_name(self, name):
