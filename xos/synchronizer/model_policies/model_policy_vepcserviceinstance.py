@@ -29,6 +29,8 @@ def service_of_service_instance(si):
         return si[:-len('Tenant')] + 'Service'
     elif si.endswith('ServiceInstance'):
         return si[:-len('ServiceInstance')] + 'Service'
+    elif si.endswith('Instance'):
+        return si[:-len('Instance')] + 'Service'
     else:
         raise Exception(
             'Could not translate service instance into service: %s' % si)
@@ -63,17 +65,17 @@ class VEPCServiceInstancePolicy(Policy):
             service_instance.invalidate_cache('vspgwc_vendor')
 
         elif service_instance.leaf_model_name == 'VMMETenant':
-            vendor = VSPGWCVendor.objects.first()
+            vendor = VMMEVendor.objects.first()
             if not vendor:
                 raise Exception('No VMME vendors')
-            service_instance.vspgwc_vendor = vendor
+            service_instance.vmme_vendor = vendor
             service_instance.invalidate_cache('vmme_vendor')
 
         elif service_instance.leaf_model_name == 'VHSSTenant':
-            vendor = VSPGWCVendor.objects.first()
+            vendor = VHSSVendor.objects.first()
             if not vendor:
                 raise Exception('No VHSS vendors')
-            service_instance.vspgwc_vendor = vendor
+            service_instance.vhss_vendor = vendor
             service_instance.invalidate_cache('vhss_vendor')
 
 
