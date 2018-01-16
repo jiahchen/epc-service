@@ -97,7 +97,7 @@ blueprints:
           - name: VMMETenant
             networks:
               - s6a_network
-      - name: OAISPGWInstance
+      - name: OAISPGWServiceInstance
         networks:
           - management
           - s1u_network
