@@ -79,22 +79,22 @@ blueprints:
         permit_all_slices: True
         template: s11_template
       - name: sgi_network
-        subnet: 10.8.1.0/24
+        subnet: 115.0.0.0/24
         permit_all_slices: True
         template: sgi_template
     graph:
+      - name: VHSSTenant
+        networks:
+          - management
+          - s6a_network
       - name: VMMETenant
         networks:
           - management
           - s6a_network
           - s11_network
           - s1mme_network
-      - name: VHSSTenant
-        networks:
-          - management
-          - s6a_network
         links:
-          - name: VMMETenant
+          - name: VHSSTenant
             networks:
               - s6a_network
       - name: OAISPGWServiceInstance
