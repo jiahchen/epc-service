@@ -95,10 +95,6 @@ blueprints:
           - s1u_network
           - flat_sgi_network
           - s11_network
-        links:
-          - name: VMMETenant
-            networks:
-              - s11_network
 
       - name: VMMETenant
         networks:
@@ -110,6 +106,9 @@ blueprints:
           - name: VHSSTenant
             networks:
               - s6a_network
+          - name: OAISPGWServiceInstance
+            networks:
+              - s11_network
 
 dependency_graph: "/opt/xos/synchronizers/epc-service/model-deps"
 #steps_dir: "/opt/xos/synchronizers/epc-service/steps"
