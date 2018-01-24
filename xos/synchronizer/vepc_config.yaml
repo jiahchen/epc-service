@@ -87,7 +87,6 @@ blueprints:
         networks:
           - management
           - s6a_network
-          - flat_sgi_network
 
       - name: OAISPGWServiceInstance
         networks:
